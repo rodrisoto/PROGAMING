@@ -128,32 +128,6 @@ header img.bg-fondo {
   display: block;
 }
 
-.flechas-laterales {
-    position: absolute;
-    top: 130%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-    padding: 0 90px;
-    pointer-events: none;
-  }
-  
-  .flecha {
-    font-size: 2.5rem;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 50%;
-    transition: background 0.3s, transform 0.3s;
-    pointer-events: all;
-    z-index: 999;
-  }
-  
-  .flecha:hover {
-    background: #ff0000;
-    transform: scale(1.1);
-  }
 
   /* Boton de registro */
   .top-right-buttons {
