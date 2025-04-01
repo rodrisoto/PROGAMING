@@ -166,7 +166,7 @@ header img.bg-fondo {
   .btn-registro:hover,
   .btn-login:hover {
     transform: scale(1.05);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(114, 97, 97, 0.435);
     border: 2px solid white;
   }
 

@@ -114,7 +114,7 @@
     }
 
     .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(149, 142, 142, 0.5);
     }
 
     .btn-primary {
@@ -146,7 +146,7 @@
     }
 
     .btn-secondary:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(236, 15, 15, 0.1);
       transform: scale(1.05);
     }
 
@@ -181,7 +181,7 @@
     }
 
     .form-control.is-valid {
-      border-color: #28a745;
+      border-color: #db2d62;
       background-image: none;
     }
 
