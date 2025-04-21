@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Cargar el sistema de archivos estáticos -->
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Tus estilos -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- Flechas -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- dynamicMenu.js -->
+  <script src="{% static 'js/dynamicMenu.js' %}" defer></script>
+
+  <title>PROGAMING</title>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="top-right-buttons">
+      {% if user.is_authenticated %}
+        <span class="welcome-message" style="color: white; font-weight: bold; font-size: 1.2rem; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">
+          Bienvenido, {{ user.username }}!
+        </span>
+    
+        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn-login">Cerrar sesión</button>
+        </form>
+    
+      {% else %}
+        <a href="{% url 'login' %}"><button class="btn-login">Iniciar sesión</button></a>
+        <a href="{% url 'crear' %}"><button class="btn-registro">Registro</button></a>
+      {% endif %}
+    </div>
+
+    <!-- Fondo sin control -->
+    <img src="{% static 'image/fondo.png' %}" alt="Fondo PROGAMING" class="bg-fondo">
+
+    <!-- Control animado encima -->
+    <img src="{% static 'image/control.png' %}" alt="Control" class="float-control">
+
+    <!-- Menú -->
+    <div class="menu text-center">
+      <nav>
+        <ul>
+          <li><a href="{% url 'libros' %}">Acción y Aventura</a></li>
+          <li><a href="{% url 'categoria2' %}">Estrategia y Simulación</a></li>
+          <li><a href="{% url 'categoria3' %}">Shooter</a></li>
+          <li><a href="{% url 'categoria4' %}">Deportes y Carreras</a></li>
+          <li><a href="{% url 'categoria5' %}">Terror</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  <!-- TÍTULO -->
+  <h1 class="animate__animated animate__bounceIn">Estrategia y Simulación</h1>
+
+  <!-- GALERÍA DE JUEGOS -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-6 col-lg-4 mb-4 animate__animated animate__fadeInLeft">
+        <div class="juegos">
+          <img src="{% static 'image/supervivencia1.jpg' %}" alt="Juego de acción y aventura">
+          <h2>Subnautica</h2>
+          <p class="descripcion-juego">Desciende a las profundidades de un mundo submarino alienígena lleno de belleza y peligros. Crea equipamiento, pilota submarinos, terraforma el terreno, y burla los peligros para explorar exhuberantes arrecifes de coral, volcanes, sistemas de cuevas y más - Todo mientras intentas sobrevivir.</p>
+          <br>
+          <br>
+          <h3>precio: $16.990 </h3>
+          <button>Comprar</button>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mb-4 animate__animated animate__fadeInRight">
+        <div class="juegos">
+          <img src="{% static 'image/supervivencia2.jpg' %}" alt="Juego de acción y aventura">
+          <h2>ARK: Survival Evolved</h2>
+          <p class="descripcion-juego">Juega como un hombre o una mujer desnudo, congelándote y muriéndote de hambre en una isla misteriosa. Debes cazar, cosechar, crear objetos, cultivar, y construir refugios para sobrevivir. Usa tu habilidad y astucia para matar, domesticar, criar y cabalgar dinosaurios y otras criaturas primitivas.<br>
+            <br>
+            <br></p>
+          <h3>precio: $13.990 </h3>
+          <button>Comprar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white text-center py-4">
+    <p>&copy; PROGAMING 2025. Todos los derechos reservados.</p>
+    <p>Contacto: Grupo 9 - Duoc UC</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- Toast de cierre de sesión -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="logoutToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        ¡Has cerrado sesión correctamente!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function cerrarSesion() {
+    // Mostrar el toast
+    const toastElement = document.getElementById('logoutToast');
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+
+    // Esperar 2 segundos y redirigir al logout real
+    setTimeout(() => {
+      window.location.href = "{% url 'logout' %}";
+    }, 2000);
+  }
+</script>
+</body>
+</html>
