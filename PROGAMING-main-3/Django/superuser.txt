@@ -1,0 +1,8 @@
+user: progaming
+pass: adminadmin
+
+user: wave
+pass: Progaming1=
+
+user: viktor
+pass: Progaming1=
